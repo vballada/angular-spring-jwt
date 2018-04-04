@@ -1,4 +1,5 @@
 security:
-    basic:
-      enabled: false
-      
+    user:
+        name: vballada      
+        password: achanger
+
