@@ -109,12 +109,7 @@
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
 				<version>0.7.9</version>
-				<configuration>
-					<excludes>
-						<exclude>in/sivalabs/freelancerkit/entities/*</exclude>
-						<exclude>in/sivalabs/freelancerkit/*Application</exclude>
-					</excludes>
-				</configuration>
+				
 				<executions>
 					<execution>
 						<id>default-prepare-agent</id>
@@ -156,7 +151,7 @@
 										<limit implementation="org.jacoco.report.check.Limit">
 											<counter>COMPLEXITY</counter>
 											<value>COVEREDRATIO</value>
-											<minimum>0.60</minimum>
+											<minimum>0.30</minimum>
 										</limit>
 									</limits>
 								</rule>
