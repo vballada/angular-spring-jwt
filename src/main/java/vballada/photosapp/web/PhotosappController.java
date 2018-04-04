@@ -10,6 +10,6 @@ public class PhotosappController {
 	@RequestMapping("/hello")
 	@ResponseBody
 	public String helloWorld() {
-		return "Hello!";
+		return "Hello Angular Spring Jwt!";
 	}
 }
