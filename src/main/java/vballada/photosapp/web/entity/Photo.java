@@ -1,4 +1,4 @@
-package vballada.photoapp.web.entity;
+package vballada.photosapp.web.entity;
 
 import java.sql.Timestamp;
 
