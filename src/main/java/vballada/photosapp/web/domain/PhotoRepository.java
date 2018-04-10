@@ -8,6 +8,6 @@ import org.springframework.data.mongodb.repository.MongoRepository;
  *         Repository For Entity {@link Photo}
  *         </p>
  */
-public interface PhotoRepository extends MongoRepository<Photo, Long> {
+public interface PhotoRepository extends MongoRepository<Photo, Integer> {
 
 }
