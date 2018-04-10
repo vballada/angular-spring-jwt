@@ -11,7 +11,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 @DataMongoTest
 @ActiveProfiles("embedded")
-public class PhotosappWebApplicationTests {
+public class PhotosappWebApplicationITest {
 
 	@Test
 	public void contextLoads() {
