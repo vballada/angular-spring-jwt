@@ -1,6 +1,6 @@
 package vballada.photosapp.web.domain;
 
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -12,21 +12,21 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Photo {
 
 	@Id
-	private Long id;
+	private Integer id;
 
 	private String filename;
 
-	private Timestamp datetime;
+	private LocalDateTime datetime;
 
 	private String location;
 
 	private String username;
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -38,11 +38,11 @@ public class Photo {
 		this.filename = filename;
 	}
 
-	public Timestamp getDatetime() {
+	public LocalDateTime getDatetime() {
 		return datetime;
 	}
 
-	public void setDatetime(Timestamp datetime) {
+	public void setDatetime(LocalDateTime datetime) {
 		this.datetime = datetime;
 	}
 
