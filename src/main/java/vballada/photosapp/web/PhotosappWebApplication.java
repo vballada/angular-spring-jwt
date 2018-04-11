@@ -11,7 +11,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.dao.DataAccessResourceFailureException;
 
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
 import vballada.photosapp.web.domain.Photo;
 import vballada.photosapp.web.domain.PhotoRepository;
 
@@ -22,7 +21,6 @@ import vballada.photosapp.web.domain.PhotoRepository;
  *         </p>
  */
 @SpringBootApplication
-@EnableSwagger2
 public class PhotosappWebApplication {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(PhotosappWebApplication.class);
@@ -38,8 +36,9 @@ public class PhotosappWebApplication {
 	 *            The Spring Data Repository
 	 * @return An instance of {@link ApplicationRunner}
 	 */
+
 	@Bean
-	ApplicationRunner init(PhotoRepository repository) {
+	public ApplicationRunner init(PhotoRepository repository) {
 		try {
 			repository.deleteAll();
 			return args -> {
@@ -60,4 +59,5 @@ public class PhotosappWebApplication {
 			};
 		}
 	}
+
 }
