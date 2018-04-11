@@ -28,7 +28,7 @@ public class PhotosappController {
 	/**
 	 * @return The photos collection
 	 */
-	@RequestMapping("/photos")
+	@RequestMapping("/api/photos")
 	@ResponseBody
 	public Collection<Photo> photos() {
 		return repository.findAll();

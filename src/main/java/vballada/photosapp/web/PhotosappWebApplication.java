@@ -48,6 +48,7 @@ public class PhotosappWebApplication {
 					photo.setDatetime(LocalDateTime.now());
 					photo.setUsername("vballada");
 					photo.setLocation("Paris");
+					photo.setFilename(name);
 					repository.save(photo);
 				});
 				repository.findAll().forEach(System.out::println);
