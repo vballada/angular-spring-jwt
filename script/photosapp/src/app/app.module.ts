@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { PhotosComponent } from './photos/photos.component';
 import { PhotoService } from './photo.service';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { PhotoService } from './photo.service';
     ],
     imports: [
         BrowserModule,
-        HttpClientModule
+        HttpClientModule,
+        NgbModule.forRoot()
     ],
     providers: [
         PhotoService
