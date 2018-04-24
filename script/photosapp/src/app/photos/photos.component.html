@@ -1,12 +1,7 @@
 <div>
-	<ngx-datatable 
-	[rows]="photos" 
-	[columns]="columns" 
-	[footerHeight]="50"
-	[scrollbarH]="true"
-	[externalPaging]="true"
-	[count]="page.totalElements"
-    [offset]="page.pageNumber"
-    [limit]="page.size"
-	(page)='getPhotos($event)'> </ngx-datatable>
+	<ngx-datatable class="bootstrap" [rows]="photos" [columnMode]="'force'"
+		[columns]="columns" [footerHeight]="50" [scrollbarH]="true"
+		[externalPaging]="true" [count]="page.totalElements"
+		[offset]="page.pageNumber" [limit]="page.size"
+		(page)='getPhotos($event)'> </ngx-datatable>
 </div>
