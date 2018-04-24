@@ -1,8 +1,8 @@
 package vballada.photosapp.web;
 
-import java.util.Collection;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,11 +26,12 @@ public class PhotosappController {
 	private PhotoRepository repository;
 
 	/**
+	 * @param pageable 
 	 * @return The photos collection
 	 */
 	@RequestMapping("/api/photos")
 	@ResponseBody
-	public Collection<Photo> photos() {
-		return repository.findAll();
+	public Page<Photo> photos(Pageable pageable) {
+		return repository.findAll(pageable);
 	}
 }
