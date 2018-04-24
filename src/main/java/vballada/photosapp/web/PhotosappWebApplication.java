@@ -52,7 +52,7 @@ public class PhotosappWebApplication {
 				Stream.of("photo_1.jpg", "photo_2.jpg", "photo_3.jpg", "photo_4.jpg", "photo_5.jpg", "photo_6.jpg",
 						"photo_7.jpg", "photo_8.jpg", "photo_9.jpg", "photo_10.jpg", "photo_11.jpg").forEach(name -> {
 							Photo photo = new Photo();
-							photo.setId(Integer.valueOf(name.substring(6, 7)));
+							photo.setId(Integer.valueOf(name.substring(6, name.length() - 4)));
 							photo.setDatetime(LocalDateTime.now());
 							photo.setUsername(USERS[generator.nextInt(USERS.length)]);
 							photo.setLocation(CITIES[generator.nextInt(CITIES.length)]);
