@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PhotoService } from '../photo.service';
 import { Photo } from '../photo';
+import { Page } from '../page';
 
 @Component({
     selector: 'app-photos',
@@ -18,15 +19,26 @@ export class PhotosComponent implements OnInit {
         { name: 'User', prop: 'username' }
     ];
 
-    constructor(private photoService: PhotoService) { }
+    page = new Page();
+
+    constructor(private photoService: PhotoService) {
+        this.page.pageNumber = 0;
+        this.page.size = 5;
+    }
 
     ngOnInit() {
-        this.getPhotos();
+        this.getPhotos({ offset: 0 });
     }
 
-    getPhotos(): void {
-        this.photoService.getPhotos()
-            .subscribe(photos => this.photos = photos);
+    getPhotos(pageInfo): void {
+        this.page.pageNumber = pageInfo.offset;
+        this.photoService.getPhotos(this.page)
+            .subscribe(page => {
+                this.photos = page.content
+                this.page = page;
+            });
     }
+
+
 
 }

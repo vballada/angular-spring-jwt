@@ -1,6 +1,7 @@
 package vballada.photosapp.web;
 
 import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -32,7 +33,7 @@ public class PhotosappControllerTest {
 	@Test
 	public void testPhotos() throws Exception {
 		when(service.findAll()).thenReturn(buildResult());
-		mockMvc.perform(post("/api/photos")).andExpect(status().isOk());
+		mockMvc.perform(get("/api/photos").param("pageNumber", "0").param("size", "5")).andExpect(status().isOk());
 
 	}
 
