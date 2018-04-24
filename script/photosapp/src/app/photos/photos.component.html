@@ -1,5 +1,3 @@
-<ul class="photos">
-  <li *ngFor="let photo of photos">
-    <span class="badge">{{photo.id}}</span> {{photo.filename}}
-  </li>
-</ul>
+<div>
+	<ngx-datatable [rows]="photos" [columns]="columns" [scrollbarH]="true"> </ngx-datatable>
+</div>

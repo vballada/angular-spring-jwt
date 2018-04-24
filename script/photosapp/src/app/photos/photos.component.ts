@@ -11,6 +11,13 @@ export class PhotosComponent implements OnInit {
 
     photos: Photo[];
 
+    columns = [
+        { prop: 'id' },
+        { name: 'File name', prop: 'filename' },
+        { name: 'Location', prop: 'location' },
+        { name: 'User', prop: 'username' }
+    ];
+
     constructor(private photoService: PhotoService) { }
 
     ngOnInit() {

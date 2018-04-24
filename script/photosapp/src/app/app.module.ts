@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { PhotosComponent } from './photos/photos.component';
 import { PhotoService } from './photo.service';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 
 @NgModule({
@@ -14,6 +15,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
         PhotosComponent
     ],
     imports: [
+        NgxDatatableModule,
         BrowserModule,
         HttpClientModule,
         NgbModule.forRoot()
