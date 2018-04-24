@@ -2,7 +2,8 @@
 	<ngx-datatable class="bootstrap" [rows]="photos" [columnMode]="'force'"
 		[columns]="columns" [footerHeight]="40" [scrollbarH]="false"
 		[rowHeight]="'auto'"
+		[externalSorting]="true"
 		[externalPaging]="true" [count]="page.totalElements"
 		[offset]="page.pageNumber" [limit]="page.size"
-		(page)='getPhotos($event)'> </ngx-datatable>
+		(page)='getPhotos($event)' (sort)="sortPhotos($event)"> </ngx-datatable>
 </div>

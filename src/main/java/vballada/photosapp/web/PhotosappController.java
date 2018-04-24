@@ -3,6 +3,8 @@ package vballada.photosapp.web;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -31,7 +33,8 @@ public class PhotosappController {
 	 */
 	@RequestMapping("/api/photos")
 	@ResponseBody
-	public Page<Photo> photos(Integer pageNumber, Integer size) {
-		return repository.findAll(PageRequest.of(pageNumber, size));
+	public Page<Photo> photos(Integer pageNumber, Integer size, String sort, String dir) {
+		Sort pageSort = Sort.by(Direction.fromString(dir), sort);
+		return repository.findAll(PageRequest.of(pageNumber, size, pageSort));
 	}
 }

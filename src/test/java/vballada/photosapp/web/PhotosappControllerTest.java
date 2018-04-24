@@ -32,7 +32,9 @@ public class PhotosappControllerTest {
 	@Test
 	public void testPhotos() throws Exception {
 		when(service.findAll()).thenReturn(buildResult());
-		mockMvc.perform(get("/api/photos").param("pageNumber", "0").param("size", "5")).andExpect(status().isOk());
+		mockMvc.perform(
+				get("/api/photos").param("pageNumber", "0").param("size", "5").param("sort", "id").param("dir", "asc"))
+				.andExpect(status().isOk());
 
 	}
 

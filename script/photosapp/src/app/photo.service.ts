@@ -10,7 +10,7 @@ export class PhotoService {
     private photosUrl = 'api/photos';
     constructor(private http: HttpClient) { }
 
-    getPhotos(page): Observable<Page> {
-        return this.http.get<Page>(this.photosUrl+'?pageNumber='+page.pageNumber+'&size='+page.size);
+    getPhotos(page, sort): Observable<Page> {
+        return this.http.get<Page>(this.photosUrl+'?pageNumber='+page.pageNumber+'&size='+page.size+'&sort='+sort.prop+'&dir='+sort.dir);
     }
 }
