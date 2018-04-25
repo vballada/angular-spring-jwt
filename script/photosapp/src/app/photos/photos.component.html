@@ -1,36 +1,56 @@
-<button class="btn btn-sm btn-outline-primary" (click)="open(content)">Columns</button>
-<div>
-	<ngx-datatable class="bootstrap" [rows]="photos" [columnMode]="'force'"
-		[footerHeight]="40" [scrollbarH]="false" [rowHeight]="'auto'"
-		[externalSorting]="true" [externalPaging]="true"
-		[count]="page.totalElements" [offset]="page.pageNumber"
-		[limit]="page.size" (page)='getPhotos($event)'
-		(sort)="sortPhotos($event)"> <ngx-datatable-column
-		*ngFor="let col of columns" [name]="col.name" [prop]="col.prop"
-		[pipe]="col.pipe"> </ngx-datatable-column> </ngx-datatable>
-
-
+<div class="card">
+	<div class="card-header bg-light">Search Photos</div>
+	<div class="card-body">
+		<form class="form-inline">
+			<div class="d-flex">
+				<label class="mr-sm-2" for="inlineFormCustomSelect">Location</label>
+				<select class="custom-select">
+					<option>Amiens</option>
+					<option>Paris</option>
+					<option>Vanne</option>
+				</select> 
+			</div>
+		</form>
+	</div>
 </div>
+<br />
+<div class="card">
+
+	<div class="card-body">
+		<button class="btn btn-sm btn-outline-primary" (click)="open(content)">Columns</button>
+		<div>
+			<ngx-datatable class="bootstrap" [rows]="photos"
+				[columnMode]="'force'" [footerHeight]="40" [scrollbarH]="false"
+				[rowHeight]="'auto'" [externalSorting]="true"
+				[externalPaging]="true" [count]="page.totalElements"
+				[offset]="page.pageNumber" [limit]="page.size"
+				(page)='getPhotos($event)' (sort)="sortPhotos($event)">
+			<ngx-datatable-column *ngFor="let col of columns" [name]="col.name"
+				[prop]="col.prop" [pipe]="col.pipe"> </ngx-datatable-column> </ngx-datatable>
 
 
-<ng-template #content let-c="close" let-d="dismiss">
-	<div class="modal-header">
-		<h4 class="modal-title">Columns</h4>
-		<button type="button" class="close" aria-label="Close"
-			(click)="d('Cross click')">
-			<span aria-hidden="true">&times;</span>
-		</button>
-	</div>
-	<div class="modal-body">
-		<ul>
-			<li *ngFor='let col of allColumns'><input type='checkbox'
-				[id]="col.name" (click)='toggle(col)' [checked]='isChecked(col)' />
-				<label [attr.for]="col.name">{{col.name}}</label></li>
-		</ul>
-	</div>
-	<div class="modal-footer">
-		<button type="button" class="btn btn-outline-dark"
-			(click)="c('Close click')">Close</button>
-	</div>
-</ng-template>
+		</div>
 
+
+		<ng-template #content let-c="close" let-d="dismiss">
+		<div class="modal-header">
+			<h4 class="modal-title">Columns</h4>
+			<button type="button" class="close" aria-label="Close"
+				(click)="d('Cross click')">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		<div class="modal-body">
+			<ul>
+				<li *ngFor='let col of allColumns'><input type='checkbox'
+					[id]="col.name" (click)='toggle(col)' [checked]='isChecked(col)' />
+					<label [attr.for]="col.name">{{col.name}}</label></li>
+			</ul>
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-outline-dark"
+				(click)="c('Close click')">Close</button>
+		</div>
+		</ng-template>
+	</div>
+</div>
