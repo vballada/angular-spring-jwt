@@ -39,8 +39,10 @@ export class PhotosComponent implements OnInit {
         this.page.pageNumber = pageInfo.offset;
         this.photoService.getPhotos(this.page, this.sort)
             .subscribe(page => {
-                this.photos = page.content
+                this.photos = page.content;
                 this.page = page;
+                this.page.pageNumber = pageInfo.offset;
+                console.log(this.page);
             });
     }
     
