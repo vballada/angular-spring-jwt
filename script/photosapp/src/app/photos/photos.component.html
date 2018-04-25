@@ -1,9 +1,21 @@
 <div>
 	<ngx-datatable class="bootstrap" [rows]="photos" [columnMode]="'force'"
-		[columns]="columns" [footerHeight]="40" [scrollbarH]="false"
-		[rowHeight]="'auto'"
-		[externalSorting]="true"
-		[externalPaging]="true" [count]="page.totalElements"
-		[offset]="page.pageNumber" [limit]="page.size"
-		(page)='getPhotos($event)' (sort)="sortPhotos($event)"> </ngx-datatable>
+		[footerHeight]="40" [scrollbarH]="false" [rowHeight]="'auto'"
+		[externalSorting]="true" [externalPaging]="true"
+		[count]="page.totalElements" [offset]="page.pageNumber"
+		[limit]="page.size" (page)='getPhotos($event)'
+		(sort)="sortPhotos($event)"> <ngx-datatable-column
+		*ngFor="let col of columns" [name]="col.name" [prop]="col.prop"
+		[pipe]="col.pipe"> </ngx-datatable-column> </ngx-datatable>
+
+
+</div>
+
+<div class='selected-column'>
+	<h4>Available Columns</h4>
+	<ul>
+		<li *ngFor='let col of allColumns'><input type='checkbox'
+			[id]="col.name" (click)='toggle(col)' [checked]='isChecked(col)' />
+			<label [attr.for]="col.name">{{col.name}}</label></li>
+	</ul>
 </div>

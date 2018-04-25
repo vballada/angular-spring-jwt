@@ -15,7 +15,15 @@ export class PhotosComponent implements OnInit {
     photos: Photo[];
 
     columns = [
-        { prop: 'id' },
+        { name: 'Id', prop: 'id' },
+        { name: 'File name', prop: 'filename' },
+        { name: 'Location', prop: 'location' },
+        { name: 'User', prop: 'username' },
+        { name: 'Date', prop: 'datetime', pipe: new DateTimePipe('en-US') }
+    ];
+
+    allColumns = [
+        { name: 'Id', prop: 'id' },
         { name: 'File name', prop: 'filename' },
         { name: 'Location', prop: 'location' },
         { name: 'User', prop: 'username' },
@@ -23,7 +31,7 @@ export class PhotosComponent implements OnInit {
     ];
 
     page = new Page();
-    
+
     sort = new Sort();
 
     constructor(private photoService: PhotoService) {
@@ -47,7 +55,7 @@ export class PhotosComponent implements OnInit {
                 console.log(this.page);
             });
     }
-    
+
     sortPhotos(event): void {
         this.sort.prop = event.sorts[0].prop;
         this.sort.dir = event.sorts[0].dir;
@@ -59,12 +67,31 @@ export class PhotosComponent implements OnInit {
             });
     }
 
+    toggle(col) {
+        const isChecked = this.isChecked(col);
+
+        if (isChecked) {
+            this.columns = this.columns.filter(c => {
+                return c.name !== col.name;
+            });
+        } else {
+            this.columns = [...this.columns, col];
+        }
+    }
+
+    isChecked(col) {
+        return this.columns.find(c => {
+            return c.name === col.name;
+        });
+    }
+
+
 
 
 }
 
 class DateTimePipe extends DatePipe {
-  public transform(value): any {
-    return super.transform(value, 'dd/MM/y HH:m:s');
-  }
+    public transform(value): any {
+        return super.transform(value, 'dd/MM/y HH:m:s');
+    }
 }
