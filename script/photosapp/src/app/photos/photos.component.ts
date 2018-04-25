@@ -3,6 +3,7 @@ import { PhotoService } from '../photo.service';
 import { Photo } from '../photo';
 import { Page } from '../page';
 import { Sort } from '../sort';
+import { DatePipe } from '@angular/common';
 
 @Component({
     selector: 'app-photos',
@@ -17,7 +18,8 @@ export class PhotosComponent implements OnInit {
         { prop: 'id' },
         { name: 'File name', prop: 'filename' },
         { name: 'Location', prop: 'location' },
-        { name: 'User', prop: 'username' }
+        { name: 'User', prop: 'username' },
+        { name: 'Date', prop: 'datetime', pipe: new DateTimePipe('en-US') }
     ];
 
     page = new Page();
@@ -59,4 +61,10 @@ export class PhotosComponent implements OnInit {
 
 
 
+}
+
+class DateTimePipe extends DatePipe {
+  public transform(value): any {
+    return super.transform(value, 'dd/MM/y HH:m:s');
+  }
 }
