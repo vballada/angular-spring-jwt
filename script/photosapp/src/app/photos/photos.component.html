@@ -1,3 +1,4 @@
+<button class="btn btn-sm btn-outline-primary" (click)="open(content)">Columns</button>
 <div>
 	<ngx-datatable class="bootstrap" [rows]="photos" [columnMode]="'force'"
 		[footerHeight]="40" [scrollbarH]="false" [rowHeight]="'auto'"
@@ -11,11 +12,25 @@
 
 </div>
 
-<div class='selected-column'>
-	<h4>Available Columns</h4>
-	<ul>
-		<li *ngFor='let col of allColumns'><input type='checkbox'
-			[id]="col.name" (click)='toggle(col)' [checked]='isChecked(col)' />
-			<label [attr.for]="col.name">{{col.name}}</label></li>
-	</ul>
-</div>
+
+<ng-template #content let-c="close" let-d="dismiss">
+	<div class="modal-header">
+		<h4 class="modal-title">Columns</h4>
+		<button type="button" class="close" aria-label="Close"
+			(click)="d('Cross click')">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	<div class="modal-body">
+		<ul>
+			<li *ngFor='let col of allColumns'><input type='checkbox'
+				[id]="col.name" (click)='toggle(col)' [checked]='isChecked(col)' />
+				<label [attr.for]="col.name">{{col.name}}</label></li>
+		</ul>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-outline-dark"
+			(click)="c('Close click')">Close</button>
+	</div>
+</ng-template>
+

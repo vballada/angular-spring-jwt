@@ -4,6 +4,7 @@ import { Photo } from '../photo';
 import { Page } from '../page';
 import { Sort } from '../sort';
 import { DatePipe } from '@angular/common';
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
     selector: 'app-photos',
@@ -34,7 +35,7 @@ export class PhotosComponent implements OnInit {
 
     sort = new Sort();
 
-    constructor(private photoService: PhotoService) {
+    constructor(private photoService: PhotoService, private modalService: NgbModal) {
         this.page.pageNumber = 0;
         this.page.size = 5;
         this.sort.prop = 'id';
@@ -82,6 +83,14 @@ export class PhotosComponent implements OnInit {
     isChecked(col) {
         return this.columns.find(c => {
             return c.name === col.name;
+        });
+    }
+
+    open(content) {
+        this.modalService.open(content).result.then((result) => {
+            
+        }, (reason) => {
+            
         });
     }
 
