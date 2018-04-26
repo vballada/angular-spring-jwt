@@ -11,6 +11,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.dao.DataAccessResourceFailureException;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 
 import vballada.photosapp.web.domain.Photo;
 import vballada.photosapp.web.domain.PhotoRepository;
@@ -22,6 +23,7 @@ import vballada.photosapp.web.domain.PhotoRepository;
  *         </p>
  */
 @SpringBootApplication
+@EnableWebSecurity
 public class PhotosappWebApplication {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(PhotosappWebApplication.class);

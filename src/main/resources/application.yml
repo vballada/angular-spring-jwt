@@ -3,3 +3,6 @@ spring:
     user:
       name: vballada
       password: achanger     
+logging:
+  level:
+    root: WARN 
