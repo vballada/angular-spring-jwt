@@ -3,6 +3,7 @@ import { PhotoService } from '../photo.service';
 import { Photo } from '../photo';
 import { Page } from '../page';
 import { Sort } from '../sort';
+import { Criteria } from '../criteria';
 import { DatePipe } from '@angular/common';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
@@ -14,6 +15,8 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 export class PhotosComponent implements OnInit {
 
     photos: Photo[];
+
+    criteria: Criteria = new Criteria();
 
     columns = [
         { name: 'Id', prop: 'id' },
@@ -68,6 +71,12 @@ export class PhotosComponent implements OnInit {
             });
     }
 
+    onSubmit(): void {
+
+        
+
+    }
+
     toggle(col) {
         const isChecked = this.isChecked(col);
 
@@ -88,9 +97,9 @@ export class PhotosComponent implements OnInit {
 
     open(content) {
         this.modalService.open(content).result.then((result) => {
-            
+
         }, (reason) => {
-            
+
         });
     }
 
