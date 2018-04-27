@@ -1,31 +1,54 @@
 <div class="card">
 	<div class="card-header bg-light">Search Photos</div>
 	<div class="card-body">
-		<form>
-			<div class="form-group">
-				<div class="input-group">
-					<input class="form-control" placeholder="yyyy-mm-dd" name="dp"
-						 ngbDatepicker #d="ngbDatepicker">
-					<div class="input-group-append">
-						<button class="btn btn-outline-secondary" (click)="d.toggle()"
-							type="button">
-							<img src="assets/img/calendar-icon.svg"
-								style="width: 1.2rem; height: 1rem; cursor: pointer;" />
-						</button>
+		<form class="row">
+			<div class="col-6">
+				<div class="form-group">
+					<label class="mr-sm-2">Start Date</label>
+					<div class="input-group">
+						<input class="form-control" placeholder="yyyy-mm-dd" name="dp"
+							ngbDatepicker #d="ngbDatepicker">
+						<div class="input-group-append">
+							<button class="btn btn-outline-secondary" (click)="d.toggle()"
+								type="button">
+								<img src="assets/img/calendar-icon.svg"
+									style="width: 1.2rem; height: 1rem; cursor: pointer;" />
+							</button>
+						</div>
 					</div>
 				</div>
+				<div class="form-group">
+					<label class="mr-sm-2" for="inlineFormCustomSelect">Location</label>
+					<select class="custom-select">
+						<option>Amiens</option>
+						<option>Paris</option>
+						<option>Vanne</option>
+					</select>
+				</div>
 			</div>
-			<div class="form-group">
-				<label class="mr-sm-2" for="inlineFormCustomSelect">Location</label>
-				<select class="custom-select">
-					<option>Amiens</option>
-					<option>Paris</option>
-					<option>Vanne</option>
-				</select>
+			<div class="col-6">
+				<div class="form-group">
+					<label class="mr-sm-2">End Date</label>
+					<div class="input-group">
+						<input class="form-control" placeholder="yyyy-mm-dd" name="dp"
+							ngbDatepicker #d="ngbDatepicker">
+						<div class="input-group-append">
+							<button class="btn btn-outline-secondary" (click)="d.toggle()"
+								type="button">
+								<img src="assets/img/calendar-icon.svg"
+									style="width: 1.2rem; height: 1rem; cursor: pointer;" />
+							</button>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<button class="btn btn-sm btn-outline-primary">Search</button>
+				</div>
 			</div>
 		</form>
 	</div>
 </div>
+
 <br />
 <div class="card">
 
