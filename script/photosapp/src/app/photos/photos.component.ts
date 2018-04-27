@@ -16,6 +16,12 @@ export class PhotosComponent implements OnInit {
 
     photos: Photo[];
 
+    cities = [
+        { id: "Amiens", name: "Amiens" },
+        { id: "Paris", name: "Paris" },
+        { id: "Vannes", name: "Vannes" },
+    ];
+
     criteria: Criteria = new Criteria();
 
     columns = [
@@ -73,7 +79,7 @@ export class PhotosComponent implements OnInit {
 
     onSubmit(): void {
 
-        
+        alert(this.criteria.location);
 
     }
 
