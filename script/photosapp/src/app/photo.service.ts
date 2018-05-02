@@ -12,13 +12,8 @@ export class PhotoService {
     private criteria: Criteria = new Criteria();
     
     constructor(private http: HttpClient) { }
-
-    getPhotos(page, sort): Observable<Page> {
-        
-        this.criteria.pageNumber = page.pageNumber;
-        this.criteria.size = page.size;
-        this.criteria.sort = sort.prop;
-        this.criteria.dir = sort.dir;
-        return this.http.post<Page>(this.photosUrl, this.criteria);
+    
+    getPhotos(criteria): Observable<Page> {
+        return this.http.post<Page>(this.photosUrl, criteria);
     }
 }

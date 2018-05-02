@@ -42,13 +42,13 @@ export class PhotosComponent implements OnInit {
 
     page = new Page();
 
-    sort = new Sort();
-
     constructor(private photoService: PhotoService, private modalService: NgbModal) {
         this.page.pageNumber = 0;
         this.page.size = 5;
-        this.sort.prop = 'id';
-        this.sort.dir = 'asc';
+        this.criteria.sort = 'id';
+        this.criteria.dir = 'asc';
+        this.criteria.pageNumber = 0;
+        this.criteria.size = 5;
     }
 
     ngOnInit() {
@@ -56,8 +56,8 @@ export class PhotosComponent implements OnInit {
     }
 
     getPhotos(pageInfo): void {
-        this.page.pageNumber = pageInfo.offset;
-        this.photoService.getPhotos(this.page, this.sort)
+        this.criteria.pageNumber = pageInfo.offset;
+        this.photoService.getPhotos(this.criteria)
             .subscribe(page => {
                 this.photos = page.content;
                 this.page = page;
@@ -67,10 +67,10 @@ export class PhotosComponent implements OnInit {
     }
 
     sortPhotos(event): void {
-        this.sort.prop = event.sorts[0].prop;
-        this.sort.dir = event.sorts[0].dir;
-        this.page.pageNumber = 0;
-        this.photoService.getPhotos(this.page, this.sort)
+        this.criteria.sort = event.sorts[0].prop;
+        this.criteria.dir = event.sorts[0].dir;
+        this.criteria.pageNumber = 0;
+        this.photoService.getPhotos(this.criteria)
             .subscribe(page => {
                 this.photos = page.content
                 this.page = page;
@@ -78,9 +78,12 @@ export class PhotosComponent implements OnInit {
     }
 
     onSubmit(): void {
-
-        alert(this.criteria.location);
-
+        this.criteria.pageNumber = 0;
+        this.photoService.getPhotos(this.criteria)
+            .subscribe(page => {
+                this.photos = page.content
+                this.page = page;
+            });
     }
 
     toggle(col) {
