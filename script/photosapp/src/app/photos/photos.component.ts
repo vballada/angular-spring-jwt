@@ -83,6 +83,7 @@ export class PhotosComponent implements OnInit {
             .subscribe(page => {
                 this.photos = page.content
                 this.page = page;
+                this.page.pageNumber = 0;
             });
     }
 
