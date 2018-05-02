@@ -19,7 +19,7 @@
 				</div>
 				<div class="form-group">
 					<label class="mr-sm-2" for="inlineFormCustomSelect">Location</label>
-					<select [(ngModel)]="criteria.location" class="custom-select">
+					<select [(ngModel)]="criteria.location" name="sc" class="custom-select">
 						<option *ngFor="let c of cities" [value]="c.id">{{c.name}}</option>
 					</select>
 				</div>
