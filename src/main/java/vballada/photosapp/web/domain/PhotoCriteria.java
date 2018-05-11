@@ -6,7 +6,7 @@ package vballada.photosapp.web.domain;
  *         Search Criteria
  *         </p>
  */
-public class Criteria {
+public class PhotoCriteria {
 
 	private String location;
 	private String startdate;

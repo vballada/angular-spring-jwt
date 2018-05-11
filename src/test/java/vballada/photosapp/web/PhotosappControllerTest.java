@@ -23,7 +23,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
-import vballada.photosapp.web.domain.Criteria;
+import vballada.photosapp.web.domain.PhotoCriteria;
 import vballada.photosapp.web.domain.Photo;
 import vballada.photosapp.web.domain.PhotoRepository;
 
@@ -46,7 +46,7 @@ public class PhotosappControllerTest {
 		ObjectMapper mapper = new ObjectMapper();
 		mapper.configure(SerializationFeature.WRAP_ROOT_VALUE, false);
 		ObjectWriter ow = mapper.writer().withDefaultPrettyPrinter();
-		Criteria criteria = new Criteria();
+		PhotoCriteria criteria = new PhotoCriteria();
 		criteria.setDir("asc");
 		criteria.setSort("id");
 		criteria.setSize(5);

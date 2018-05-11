@@ -10,8 +10,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import vballada.photosapp.web.domain.Criteria;
 import vballada.photosapp.web.domain.Photo;
+import vballada.photosapp.web.domain.PhotoAppService;
+import vballada.photosapp.web.domain.PhotoCriteria;
 import vballada.photosapp.web.domain.PhotoRepository;
 
 /**
@@ -29,14 +30,22 @@ public class PhotosappController {
 	@Autowired
 	private PhotoRepository repository;
 
+	@Autowired
+	private PhotoAppService service;
+
 	/**
 	 * @param pageable
 	 * @return The photos collection
 	 */
 	@PostMapping("/api/photos")
 	@ResponseBody
-	public Page<Photo> photos(@RequestBody Criteria criteria) {
+	public Page<Photo> photos(@RequestBody PhotoCriteria criteria) {
 		Sort pageSort = Sort.by(Direction.fromString(criteria.getDir()), criteria.getSort());
-		return repository.findAll(PageRequest.of(criteria.getPageNumber(), criteria.getSize(), pageSort));
+		if (criteria.getLocation() != null) {
+			//return service.findByCriteria(criteria);
+			return null;
+		} else {
+			return repository.findAll(PageRequest.of(criteria.getPageNumber(), criteria.getSize(), pageSort));
+		}
 	}
 }
