@@ -1,16 +1,34 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Injectable } from '@angular/core';
 import { PhotoService } from '../photo.service';
 import { Photo } from '../photo';
 import { Page } from '../page';
 import { Sort } from '../sort';
 import { Criteria } from '../criteria';
 import { DatePipe } from '@angular/common';
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import {NgbModal, ModalDismissReasons, NgbDateAdapter, NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
+
+/**
+ * Example of a Native Date adapter
+ */
+@Injectable()
+export class NgbDateNativeAdapter extends NgbDateAdapter<string> {
+
+    fromModel(date: string): NgbDateStruct {
+        var mydate = new Date(Date.parse(date));
+        return (mydate && mydate.getFullYear) ? { year: mydate.getFullYear(), month: mydate.getMonth() + 1, day: mydate.getDate() } : null;
+    }
+
+    toModel(date: NgbDateStruct): string {
+        var dt = date ? date.year + '-' + date.month + '-' + date.day : null;
+        return dt;
+    }
+}
 
 @Component({
     selector: 'app-photos',
     templateUrl: './photos.component.html',
-    styleUrls: ['./photos.component.css']
+    styleUrls: ['./photos.component.css'],
+    providers: [{provide: NgbDateAdapter, useClass: NgbDateNativeAdapter}]
 })
 export class PhotosComponent implements OnInit {
 

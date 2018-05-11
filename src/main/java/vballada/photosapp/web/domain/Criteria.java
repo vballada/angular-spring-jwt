@@ -1,7 +1,5 @@
 package vballada.photosapp.web.domain;
 
-import java.util.Date;
-
 /**
  * @author BALLADA_V
  *         <p>
@@ -11,8 +9,8 @@ import java.util.Date;
 public class Criteria {
 
 	private String location;
-	private Date startdate;
-	private Date enddate;
+	private String startdate;
+	private String enddate;
 	private int pageNumber;
 	private int size;
 	private String sort;
@@ -58,19 +56,19 @@ public class Criteria {
 		this.dir = dir;
 	}
 
-	public Date getStartdate() {
+	public String getStartdate() {
 		return startdate;
 	}
 
-	public void setStartdate(Date startdate) {
+	public void setStartdate(String startdate) {
 		this.startdate = startdate;
 	}
 
-	public Date getEnddate() {
+	public String getEnddate() {
 		return enddate;
 	}
 
-	public void setEnddate(Date enddate) {
+	public void setEnddate(String enddate) {
 		this.enddate = enddate;
 	}
 
