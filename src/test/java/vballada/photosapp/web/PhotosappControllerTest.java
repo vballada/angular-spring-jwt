@@ -23,8 +23,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
-import vballada.photosapp.web.domain.PhotoCriteria;
 import vballada.photosapp.web.domain.Photo;
+import vballada.photosapp.web.domain.PhotoAppService;
+import vballada.photosapp.web.domain.PhotoCriteria;
 import vballada.photosapp.web.domain.PhotoRepository;
 
 @RunWith(SpringRunner.class)
@@ -37,6 +38,9 @@ public class PhotosappControllerTest {
 
 	@MockBean
 	private PhotoRepository service;
+	
+	@MockBean
+	private PhotoAppService photoAppService;
 
 	public static final MediaType APPLICATION_JSON_UTF8 = new MediaType(MediaType.APPLICATION_JSON.getType(),
 			MediaType.APPLICATION_JSON.getSubtype(), Charset.forName("utf8"));
