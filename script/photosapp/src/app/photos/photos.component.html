@@ -6,8 +6,9 @@
 				<div class="form-group">
 					<label class="mr-sm-2">Start Date</label>
 					<div class="input-group">
-						<input class="form-control" [(ngModel)]="criteria.startdate"  placeholder="yyyy-mm-dd" name="dp"
-							ngbDatepicker #d="ngbDatepicker">
+						<input class="form-control" [(ngModel)]="criteria.startdate"
+							placeholder="yyyy-mm-dd" name="dp" ngbDatepicker
+							#d="ngbDatepicker">
 						<div class="input-group-append">
 							<button class="btn btn-outline-secondary" (click)="d.toggle()"
 								type="button">
@@ -19,7 +20,8 @@
 				</div>
 				<div class="form-group">
 					<label class="mr-sm-2" for="inlineFormCustomSelect">Location</label>
-					<select [(ngModel)]="criteria.location" name="sc" class="custom-select">
+					<select [(ngModel)]="criteria.location" name="sc"
+						class="custom-select">
 						<option *ngFor="let c of cities" [value]="c.id">{{c.name}}</option>
 					</select>
 				</div>
@@ -28,8 +30,9 @@
 				<div class="form-group">
 					<label class="mr-sm-2">End Date</label>
 					<div class="input-group">
-						<input class="form-control" [(ngModel)]="criteria.enddate"  placeholder="yyyy-mm-dd" name="dp"
-							ngbDatepicker #c="ngbDatepicker">
+						<input class="form-control" [(ngModel)]="criteria.enddate"
+							placeholder="yyyy-mm-dd" name="dp" ngbDatepicker
+							#c="ngbDatepicker">
 						<div class="input-group-append">
 							<button class="btn btn-outline-secondary" (click)="c.toggle()"
 								type="button">
@@ -40,8 +43,12 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<button type="submit" class="btn btn-sm btn-outline-primary">Search</button>
-					<button  class="btn btn-sm btn-outline-primary" (click)="cancelFilter()">Cancel</button>
+					<label class="mr-sm-2">Actions</label>
+					<div>
+						<button type="submit" class="btn btn-outline-primary">Search</button>
+						<button class="btn btn-outline-primary pull-right"
+							(click)="cancelFilter()">Cancel</button>
+					</div>
 				</div>
 			</div>
 		</form>
