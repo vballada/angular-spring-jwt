@@ -1,5 +1,7 @@
 package vballada.photosapp.web.domain;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +28,18 @@ public class PhotoAppService {
 		Criteria mdbcriteria = new Criteria();
 		if (criteria.getLocation() != null) {
 			mdbcriteria = mdbcriteria.and("location").is(criteria.getLocation());
+		}
+		if (criteria.getStartdate() != null && criteria.getEnddate() != null) {
+			mdbcriteria = mdbcriteria.and("datetime")
+					.gte(LocalDate.parse(criteria.getStartdate(), DateTimeFormatter.ofPattern("yyyy-M-d")))
+					.lt(LocalDate.parse(criteria.getEnddate(), DateTimeFormatter.ofPattern("yyyy-M-d")));
+
+		} else if (criteria.getStartdate() != null) {
+			mdbcriteria = mdbcriteria.and("datetime")
+					.gte(LocalDate.parse(criteria.getStartdate(), DateTimeFormatter.ofPattern("yyyy-M-d")));
+		} else if (criteria.getEnddate() != null) {
+			mdbcriteria = mdbcriteria.and("datetime")
+					.lt(LocalDate.parse(criteria.getEnddate(), DateTimeFormatter.ofPattern("yyyy-M-d")));
 		}
 		Query query = new Query(mdbcriteria);
 		query.with(pageable);
