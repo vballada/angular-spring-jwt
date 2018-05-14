@@ -80,7 +80,6 @@ export class PhotosComponent implements OnInit {
                 this.photos = page.content;
                 this.page = page;
                 this.page.pageNumber = pageInfo.offset;
-                console.log(this.page);
             });
     }
 
@@ -130,8 +129,12 @@ export class PhotosComponent implements OnInit {
 
         });
     }
-
-
+    
+    cancelFilter(){
+        this.criteria.startdate = null;
+        this.criteria.enddate = null;
+        this.criteria.location = null;
+    }
 
 
 }
