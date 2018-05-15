@@ -62,11 +62,11 @@ export class PhotosComponent implements OnInit {
 
     constructor(private photoService: PhotoService, private modalService: NgbModal) {
         this.page.pageNumber = 0;
-        this.page.size = 5;
+        this.page.size = 8;
         this.criteria.sort = 'id';
         this.criteria.dir = 'asc';
         this.criteria.pageNumber = 0;
-        this.criteria.size = 5;
+        this.criteria.size = 8;
     }
 
     ngOnInit() {
