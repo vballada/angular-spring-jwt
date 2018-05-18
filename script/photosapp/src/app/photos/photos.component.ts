@@ -37,7 +37,7 @@ export class PhotosComponent implements OnInit {
     cities = [
         { id: "Amiens", name: "Amiens" },
         { id: "Paris", name: "Paris" },
-        { id: "Vannes", name: "Vannes" },
+        { id: "Vannes", name: "Vannes" }
     ];
 
     criteria: Criteria = new Criteria();
@@ -123,7 +123,7 @@ export class PhotosComponent implements OnInit {
     }
 
     open(content) {
-        this.modalService.open(content).result.then((result) => {
+        this.modalService.open(content, { centered: true}).result.then((result) => {
 
         }, (reason) => {
 

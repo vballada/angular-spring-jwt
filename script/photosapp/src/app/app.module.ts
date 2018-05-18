@@ -8,18 +8,22 @@ import { PhotoService } from './photo.service';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { FormsModule } from '@angular/forms';
+import { AppRoutingModule } from './/app-routing.module';
+import { DetailphotosComponent } from './detailphotos/detailphotos.component';
 
 @NgModule({
     declarations: [
         AppComponent,
-        PhotosComponent
+        PhotosComponent,
+        DetailphotosComponent
     ],
     imports: [
         NgxDatatableModule,
         BrowserModule,
         FormsModule,
         HttpClientModule,
-        NgbModule.forRoot()
+        NgbModule.forRoot(),
+        AppRoutingModule
     ],
     providers: [
         PhotoService
