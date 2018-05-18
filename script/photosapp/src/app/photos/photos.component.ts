@@ -6,6 +6,7 @@ import { Sort } from '../sort';
 import { Criteria } from '../criteria';
 import { DatePipe } from '@angular/common';
 import {NgbModal, ModalDismissReasons, NgbDateAdapter, NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 /**
  * Example of a Native Date adapter
@@ -60,7 +61,7 @@ export class PhotosComponent implements OnInit {
 
     page = new Page();
 
-    constructor(private photoService: PhotoService, private modalService: NgbModal) {
+    constructor(private photoService: PhotoService, private modalService: NgbModal, private router: Router) {
         this.page.pageNumber = 0;
         this.page.size = 8;
         this.criteria.sort = 'id';
@@ -141,7 +142,10 @@ export class PhotosComponent implements OnInit {
     }
 
     onActivate(event) {
-        console.log('Activate Event');
+        if (event.type === 'dblclick') {
+            this.router.navigate(['/detailphotos']);
+            return true;
+        }
     }
 
 
