@@ -29,7 +29,7 @@ export class NgbDateNativeAdapter extends NgbDateAdapter<string> {
     selector: 'app-photos',
     templateUrl: './photos.component.html',
     styleUrls: ['./photos.component.css'],
-    providers: [{ provide: NgbDateAdapter, useClass: NgbDateNativeAdapter }]
+    providers: [{provide: NgbDateAdapter, useClass: NgbDateNativeAdapter}]
 })
 export class PhotosComponent implements OnInit {
 
@@ -124,14 +124,14 @@ export class PhotosComponent implements OnInit {
     }
 
     open(content) {
-        this.modalService.open(content, { centered: true }).result.then((result) => {
+        this.modalService.open(content, { centered: true}).result.then((result) => {
 
         }, (reason) => {
 
         });
     }
-
-    cancelFilter() {
+    
+    cancelFilter(){
         this.criteria.startdate = null;
         this.criteria.enddate = null;
         this.criteria.location = null;
@@ -147,6 +147,7 @@ export class PhotosComponent implements OnInit {
             return true;
         }
     }
+
 
 
 }

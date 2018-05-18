@@ -64,8 +64,7 @@
 				[rowHeight]="'auto'" [externalSorting]="true"
 				[externalPaging]="true" [count]="page.totalElements"
 				[offset]="page.pageNumber" [limit]="page.size"
-				(page)='getPhotos($event)' (sort)="sortPhotos($event)" [selectionType]="'single'"
-				(activate)="onActivate($event)" (select)='onSelect($event)'>
+				(page)='getPhotos($event)' (sort)="sortPhotos($event)">
 			<ngx-datatable-column *ngFor="let col of columns" [name]="col.name"
 				[prop]="col.prop" [pipe]="col.pipe"> </ngx-datatable-column> </ngx-datatable>
 
