@@ -1,13 +1,15 @@
 <div class="card">
 	<div class="card-body">
-		<ngb-carousel *ngIf="photos"> 
-			<ng-template *ngFor='let photo of photos' ngbSlide> 
-				<img [src]="photo.filename">
-				<div class="carousel-caption">
-					<h3>{{photo.location}}</h3>
-					<p>{{photo.username}}</p>
-				</div>
-			</ng-template> 
-		</ngb-carousel>
+		<div class="col-md-6 mx-auto">
+			<ngb-carousel *ngIf="photos"> 
+				<ng-template *ngFor='let photo of photos' ngbSlide> 
+					<img [src]="photo.filename" style="max-height:400px; margin: auto;">
+					<div class="carousel-caption">
+						<h3>{{photo.location}}</h3>
+						<p>{{photo.username}}</p>
+					</div>
+				</ng-template> 
+			</ngb-carousel>
+		</div>
 	</div>
 </div>
