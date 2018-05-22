@@ -1,7 +1,7 @@
 <div class="card">
 	<div class="card-body">
 		<ngb-carousel *ngIf="photos"> 
-			<ng-template *ngFor='let photo of photos'  ngbSlide> 
+			<ng-template *ngFor='let photo of photos' ngbSlide> 
 				<img [src]="photo.filename">
 				<div class="carousel-caption">
 					<h3>{{photo.location}}</h3>
