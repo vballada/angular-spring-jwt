@@ -60,15 +60,40 @@
 		<button class="btn btn-sm btn-outline-primary" (click)="open(content)">Columns</button>
 		<div>
 			<ngx-datatable class="bootstrap" [rows]="photos"
-				[columnMode]="'force'" [footerHeight]="40" [scrollbarH]="false"
+				[columnMode]="'flex'" [footerHeight]="40" [scrollbarH]="false"
 				[rowHeight]="'auto'" [externalSorting]="true"
 				[externalPaging]="true" [count]="page.totalElements"
 				[offset]="page.pageNumber" [limit]="page.size"
 				(page)='getPhotos($event)' (sort)="sortPhotos($event)"
 				[selectionType]="'single'" (activate)="onActivate($event)"
-				(select)='onSelect($event)'> <ngx-datatable-column
-				*ngFor="let col of columns" [name]="col.name" [prop]="col.prop"
-				[pipe]="col.pipe"> </ngx-datatable-column> </ngx-datatable>
+				(select)='onSelect($event)'> 
+				 <ngx-datatable-column name="Id" [flexGrow]="0.3">
+			          <ng-template let-value="value" ngx-datatable-cell-template>
+			            {{value}}
+			          </ng-template>
+			     </ngx-datatable-column>
+			     <ngx-datatable-column name="File Name" prop="filename" [flexGrow]="2">
+			          <ng-template let-value="value" ngx-datatable-cell-template>
+			            {{value}}
+			          </ng-template>
+			     </ngx-datatable-column>
+			     <ngx-datatable-column name="Location" [flexGrow]="1">
+			          <ng-template let-value="value" ngx-datatable-cell-template>
+			            {{value}}
+			          </ng-template>
+			     </ngx-datatable-column>
+			     <ngx-datatable-column name="Username" [flexGrow]="1">
+			          <ng-template let-value="value" ngx-datatable-cell-template>
+			            {{value}}
+			          </ng-template>
+			     </ngx-datatable-column>
+			     <ngx-datatable-column name="Date" prop="datetime" [flexGrow]="1">
+			          <ng-template let-value="value" ngx-datatable-cell-template>
+			            {{value | date: 'yyyy-MM-dd HH:mm:ss'}}
+			          </ng-template>
+			     </ngx-datatable-column>
+				
+			</ngx-datatable>
 
 
 		</div>
