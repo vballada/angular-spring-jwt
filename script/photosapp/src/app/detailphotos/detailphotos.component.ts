@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PhotoService } from '../photo.service';
+import { Photo } from '../photo';
 
 @Component({
     selector: 'app-detailphotos',
@@ -7,11 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetailphotosComponent implements OnInit {
 
-    images = ['http://localhost:8080/assets/img/photo_1.jpg', 'http://localhost:8080/assets/img/photo_2.jpg', 'http://localhost:8080/assets/img/photo_3.jpg'];
+    photos: Photo[];
 
-    constructor() { }
+    constructor(private photoService: PhotoService) { }
 
     ngOnInit() {
+        this.getAllPhotos();
+    }
+
+    getAllPhotos(): void {
+        this.photoService.getAllPhotos()
+            .subscribe(photos => {
+                this.photos = photos;
+            });
     }
 
 }

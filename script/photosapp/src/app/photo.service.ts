@@ -16,4 +16,8 @@ export class PhotoService {
     getPhotos(criteria): Observable<Page> {
         return this.http.post<Page>(this.photosUrl, criteria);
     }
+    
+    getAllPhotos(): Observable<Photo[]> {
+        return this.http.post<Photo[]>('api/allphotos', null);
+    }
 }

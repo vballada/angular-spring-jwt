@@ -58,7 +58,7 @@ public class PhotosappWebApplication {
 							photo.setDatetime(LocalDateTime.now());
 							photo.setUsername(USERS[generator.nextInt(USERS.length)]);
 							photo.setLocation(CITIES[generator.nextInt(CITIES.length)]);
-							photo.setFilename(name);
+							photo.setFilename("http://localhost:8080/assets/img/"+name);
 							repository.save(photo);
 						});
 				repository.findAll().forEach(System.out::println);
