@@ -59,7 +59,7 @@
 	<div class="card-body">
 		<button class="btn btn-sm btn-outline-primary" (click)="open(content)">Columns</button>
 		<div>
-			<ngx-datatable class="bootstrap" [rows]="photos"
+			<ngx-datatable #myTable class="bootstrap" [rows]="photos"
 				[columnMode]="'flex'" [footerHeight]="40" [scrollbarH]="false"
 				[rowHeight]="'auto'" [externalSorting]="true"
 				[externalPaging]="true" [count]="page.totalElements"
@@ -92,7 +92,28 @@
 			            {{value | date: 'yyyy-MM-dd HH:mm:ss'}}
 			          </ng-template>
 			     </ngx-datatable-column>
-				
+			     <ngx-datatable-footer>
+					  <ng-template 
+					    ngx-datatable-footer-template
+					    let-rowCount="rowCount"
+					    let-pageSize="pageSize"
+					    let-selectedCount="selectedCount"
+					    let-curPage="curPage"
+					    let-offset="offset"
+					    let-isVisible="isVisible">
+					      <datatable-pager
+					          [pagerLeftArrowIcon]="'datatable-icon-left'"
+					          [pagerRightArrowIcon]="'datatable-icon-right'"
+					          [pagerPreviousIcon]="'datatable-icon-prev'"
+					          [pagerNextIcon]="'datatable-icon-skip'"
+					          [page]="curPage"
+					          [size]="pageSize"
+					          [count]="rowCount"
+					          [hidden]="!((rowCount / pageSize) > 1)"
+					          (change)="myTable.onFooterPage($event)">
+					      </datatable-pager>
+					  </ng-template>
+					</ngx-datatable-footer>
 			</ngx-datatable>
 
 

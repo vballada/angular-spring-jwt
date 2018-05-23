@@ -10,12 +10,14 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './/app-routing.module';
 import { DetailphotosComponent } from './detailphotos/detailphotos.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         PhotosComponent,
-        DetailphotosComponent
+        DetailphotosComponent,
+        LoginComponent
     ],
     imports: [
         NgxDatatableModule,
